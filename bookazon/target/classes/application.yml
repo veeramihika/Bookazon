@@ -1,0 +1,26 @@
+server:
+  port: 8088
+spring:
+  datasource:
+    password:
+    url: jdbc:mysql://localhost:3306/demo
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
+
+  mail:
+    host: smtp.gmail.com
+    password: gzujewpyvqyqkdfk
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    username: hellocopss88@gmail.com
+
+

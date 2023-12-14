@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>done</title>
+</head>
+<body>
+<div class="header" style="margin-top: 10px;">
+        <table style="width: 100%;">
+            <tr>
+                <td style="text-align: left; width: 50%;">
+                    <p style="color: #7267cb">
+                       <strong style="font-size:40px">BOOKAZON</strong> 
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+        <div class="footer">
+        <div style="width: 100%;border-top: 1px solid #000000;"></div>
+        <table style="width: 100%; padding: 12pt 0pt; line-height: 90%;">
+            <tr valign="top">
+
+            </tr>
+
+        </table>
+    </div>
+<table class="maintable" style="width: 100%; text-align: center; "
+        cellspacing="0">
+        <thead>
+            <tr>
+                <th
+                    style="width: 20%; vertical-align: bottom;">
+                    <p class="s4" style="text-indent: 0pt; text-align: left;">
+                        Serial Number</p>
+                </th>
+                <th
+                    style="width: 20%; vertical-align: bottom; padding-bottom: 2pt;">
+                    <p class="s4" style="text-indent: 0pt; text-align: left;">
+                        Product Name</p>
+                </th>
+                <th
+                    style="width: 25%; vertical-align: bottom; padding-bottom: 2pt;">
+                    <p class="s4" style="text-indent: 0pt; text-align: left;">
+                        Description</p>
+                </th>
+                <th
+                    style="width: 20%; vertical-align: bottom; padding-bottom: 2pt;">
+                    <p class="s4" style="text-indent: 0pt; text-align: left;">
+                        Sold By</p>
+                </th>
+                <th
+                    style="width: 20%; vertical-align: bottom; padding-bottom: 2pt;">
+                    <p class="s4"
+                        style="text-indent: 0pt; text-align: right;">
+                        Amount(net)</p>
+                </th>
+            </tr>
+        </thead>
+         <tr>
+            <td colspan="5" style="padding-top: 1px;">
+                <p class="lowerborder" />
+            </td>
+        </tr>
+        <tr
+        th:each="Product: ${data}"
+        >
+        
+        <td
+            style="width: 20%; vertical-align: top;">
+            <p class="s2"
+                style="padding-top: 1pt; padding-right: 7pt; text-indent: 0pt; text-align: center;" th:text="${ProductStat.count}" ></p>
+        </td>
+        
+        <td
+            style="width: 20%; vertical-align: top;">
+             <p class="s2" style="padding-top: 3pt; padding-left: 0pt; padding-right: 7pt; text-indent: 0pt; text-align: left;" th:text="${Product.product_name}">
+            </p>
+        </td>
+        
+        <td
+            style="width: 22%;">
+            <p
+                class="s2"
+                style="padding-top: 3pt; padding-left: 0pt; text-indent: 0pt; text-align: left;"
+                th:text="${Product.description}"  />
+            <p class="s2"
+                style="padding-top: 3pt; padding-left: 0pt; text-indent: 0pt; text-align: left;">
+                <span>Author: </span><span
+                    th:text="${Product.author}"></span>
+            </p>
+
+        </td>
+              
+        <td style="width: 20%; vertical-align: top;">
+            <p class="s2" style="padding-top: 3pt; padding-left: 0pt; padding-right: 5pt; text-indent: 0pt; text-align: left;"
+             th:text="${Product.nameofseller}"></p>
+
+        </td>
+        
+        <td style="width: 20%; vertical-align: top; text-align: center;">
+            <p class="s2"
+                style="padding-top: 3pt; text-indent: 0pt; text-align:center;"
+                th:text="'Rs.'+ ${Product.price}" />
+        </td>
+
+    </tr>
+
+        
+       
+    <tr>
+            <td colspan="6">
+                <div style="width: 100%;border-top: 1px solid #000000;"></div>
+            </td>
+        </tr>
+        <tr >
+            <td colspan="4" style="width: 14.68%;">
+                <p class="s4" style="text-align: left;">Total</p>
+
+            </td>
+            <td colspan="2">
+                <p style="text-align: center">Rs.<span th:text="${total_amount}"></span></p>
+            </td>
+            
+        </tr>
+        <tr>
+        <td colspan="4" style="width: 14.68%;">
+                <p class="s4" style="text-align: left;">GST @12%</p>
+
+            </td>
+            <td colspan="2">
+                <p style="text-align: center">Rs.<span th:text="${GstAmount}"></span></p>
+            </td>
+        </tr>
+            <tr>
+            <td colspan="6">
+                <div style="width: 100%;border-top: 1px solid #000000;"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" style="width: 14.68%;">
+                <p class="s4" style="text-align: left;"><strong>Payable</strong></p>
+
+            </td>
+            <td colspan="2">
+                <p style="text-align: center">Rs.<span th:text="${total_amount+GstAmount}"></span></p>
+            </td>
+        </tr>
+    </table>
+    
+    <p style="margin-top: 80px;"><strong>Delivery Address: </strong><span th:text="${delivery_Address}"></span></p>
+    
+    
+
+</body>
+</html>
